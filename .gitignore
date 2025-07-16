@@ -1,0 +1,19 @@
+# 忽略所有 .pyc 文件
+*.pyc
+
+# 忽略 __pycache__ 目录
+__pycache__/
+
+# 忽略 data 目录
+data/
+
+# 忽略所有 .log 文件
+*.cdb
+
+
+# 忽略环境配置
+.env
+venv/
+
+*.json
+*.jsonl
