@@ -43,11 +43,11 @@
 
 4. **最终生成的训练数据格式如下（JSONL，每行为一条训练样本）：**
 
-    - `instruction` 示例：  
+    - `instruction`：  
       ```
       下面是卡片的信息，请根据这些信息生成lua脚本：{name},{desc}，{tag},卡密为{id}
       ```
-    - `output` 示例：  
+    - `output`：  
       ```
       <cn/jp标识> {code}
       ```
