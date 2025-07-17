@@ -45,7 +45,7 @@
 
     - `instruction`：  
       ```
-      下面是卡片的信息，请根据这些信息生成lua脚本：{name},{desc}，{tag},卡密为{id}
+      下面是卡片的信息，请根据这些信息生成lua脚本：{name},{desc},{tag},卡密为{id}
       ```
     - `output`：  
       ```
