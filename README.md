@@ -51,7 +51,9 @@
       ```
       <cn/jp标识> {code}
       ```
-（这里也提供可以直接使用的数据集：https://huggingface.co/datasets/en1ak/ygo_lua）
+训练集token总数约为20m，平均每条1ktoken，最大token数3019
+
+这里也提供可以直接使用的数据集：https://huggingface.co/datasets/en1ak/ygo_lua
 
 ---
 
