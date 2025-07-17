@@ -49,7 +49,7 @@
       ```
     - `output`：  
       ```
-      <cn/jp标识> {code}
+      {code}
       ```
 训练集token总数约为20m，平均每条1ktoken，最大token数3019
 
