@@ -10,6 +10,8 @@ df = pd.read_sql_query(
 print(df.shape)
 
 records = []
+
+
 def tag_to_nl(tag):
     if isinstance(tag, str):
         tag = json.loads(tag)
@@ -60,7 +62,25 @@ for _, row in df.iterrows():
     output_jp = f"{row['code']}"
     records.append(json.dumps({"instruction": instruction_jp, "output": output_jp}, ensure_ascii=False))
 
-# 写入文件，每行为一条训练数据
+
+def replace_circled_numbers(text):
+    circled_map = {
+        '①': '1', '②': '2', '③': '3', '④': '4', '⑤': '5',
+        '⑥': '6', '⑦': '7', '⑧': '8', '⑨': '9', '⑩': '10',
+    }
+    for k, v in circled_map.items():
+        text = text.replace(k, v)
+    return text
+
+
+new_records = []
+for line in records:
+    obj = json.loads(line)
+    if "instruction" in obj:
+        obj["instruction"] = replace_circled_numbers(obj["instruction"])
+    # 如果你想处理多个字段，可以在这里加
+    new_records.append(json.dumps(obj, ensure_ascii=False))
+
 with open('finetune_data.jsonl', 'w', encoding='utf-8') as f:
-    for line in records:
+    for line in new_records:
         f.write(line + '\n')
