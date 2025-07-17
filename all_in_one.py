@@ -249,12 +249,12 @@ for _, row in df.iterrows():
     tag = tag_to_nl(row['tag'])
     # 中文
     instruction_cn = f"下面是卡片的信息，请根据这些信息生成lua脚本：\n卡名：{row['name_cn']},效果文本：{row['desc_cn']},{tag},卡密为{row['id']}"
-    output_cn = f"[CN] {row['code']}"
+    output_cn = f"{row['code']}"
     records.append(json.dumps({"instruction": instruction_cn, "output": output_cn}, ensure_ascii=False))
 
     # 日文
     instruction_jp = f"下面是卡片的信息，请根据这些信息生成lua脚本：\nカード名：{row['name_jp']},効果：{row['desc_jp']},{tag},卡密为{row['id']}"
-    output_jp = f"[JP] {row['code']}"
+    output_jp = f"{row['code']}"
     records.append(json.dumps({"instruction": instruction_jp, "output": output_jp}, ensure_ascii=False))
 
 # 写入文件，每行为一条训练数据
