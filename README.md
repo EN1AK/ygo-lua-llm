@@ -2,6 +2,8 @@
 
 本项目旨在基于 DeepSeek Coder 1.3B-Instruct 模型，实现“根据卡片信息自动生成 Yu-Gi-Oh! 卡牌 Lua 脚本”的指令微调流程。
 
+模型链接：https://huggingface.co/en1ak/ygo-lua-coder
+
 ---
 
 ## 目录
@@ -29,7 +31,7 @@
     wget -O cards.cdb https://cdn02.moecube.com:444/ygopro-database/ja_JP/cards.cdb
     ```
 
-2. **下载脚本仓库：**
+2. **下载lua脚本：**
     ```bash
     git clone https://github.com/mycard/ygopro-scripts.git
     ```
@@ -51,7 +53,7 @@
       ```
       {code}
       ```
-训练集token总数约为20m，平均每条1ktoken，最大token数3019
+训练集token总数约为20m，平均每条1k，最大token数3019
 
 这里也提供可以直接使用的数据集：https://huggingface.co/datasets/en1ak/ygo_lua
 
@@ -112,3 +114,9 @@ deepspeed finetune.py \
 3：相比于棋类ai，牌类游戏ai的开发要困难很多。首先，牌类游戏一般都是非完全信息博弈，无法使用传统蒙特卡洛树搜索得到全局最优解；其次，牌类游戏的动作和状态空间都更大，对于斗地主等扑克牌，手牌还可以比较简单地编码为4x15的矩阵，对于游戏王/万智牌来说，假如只是简单地编码卡片id，不仅会让状态向量变得极端高维稀疏，模型还无法理解牌张本身效果
 
 lua脚本和效果文本包含了卡片最复杂的信息，如何将这些信息处理为机器可用且低维的数据，可能才是ygo-ai的第一步
+
+### 可以改进的地方：
+完整效果及其对应的lua脚本比较长，学习起来可能比较困难，可以通过人为构造一些简单的效果及其对应的lua脚本作为训练数据，如：
+```bash
+这张卡召唤/特殊召唤/反转成功时 丢弃/送墓/除外/送回一张手卡可以发动 破坏/表侧除外/里侧除外/送入墓地/弹回手卡/卡组对手场上一张盖放的/表侧表示的怪兽卡/魔法陷阱卡
+```
