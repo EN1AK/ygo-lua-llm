@@ -89,3 +89,12 @@ deepspeed finetune.py \
     --report_to "tensorboard" \
     --deepspeed configs/ds_config_zero3.json \
     --bf16 True
+```
+
+## 性能评测
+
+| 模型路径       | ROUGE-1 | ROUGE-2 | ROUGE-L | BLEU   | BERTScore Precision | BERTScore Recall | BERTScore F1 |
+|------------|---------|---------|---------|--------|---------------------|------------------|--------------|
+| base model | 0.0753  | 0.0125  | 0.0539  | 0.0010 | 0.6216              | 0.6621           | 0.6400       |
+| on_cn+jp    | 0.4603  | 0.4214  | 0.4302  | 0.1183 | 0.8841              | 0.8541           | 0.8673       |
+| on_cn      | 0.3042  | 0.2610  | 0.2750  | 0.0769 | 0.7955              | 0.7647           | 0.7767       |
